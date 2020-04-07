@@ -92,7 +92,7 @@ timer_sleep (int64_t ticks)
   ASSERT (intr_get_level () == INTR_ON);
 
   /* Put thread into sleep queue */
-  while (timer_elapsed (start) < ticks)
+  if (timer_elapsed (start) < ticks)
     thread_sleep(start + ticks);
 }
 
